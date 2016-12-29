@@ -21,6 +21,8 @@ In this document we will explain the serial data format including some examples.
 - If receive the {END} byte too early, discard the data.
 - Whenever we receive the escape byte, the next byte will be inverted (NOT'd).
 - Discard any messages with invalid checksum
+- If payload size is 0, skip reading payload and move to the checksum.  This allows for a command with no payload.
+- If payload length is > payload_max_length, discard the current message.
 
 ## example
 *Coded message*
